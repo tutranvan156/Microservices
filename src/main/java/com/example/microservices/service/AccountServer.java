@@ -1,4 +1,4 @@
-package com.example.microservices;
+package com.example.microservices.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
