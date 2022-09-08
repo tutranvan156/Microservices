@@ -5,4 +5,4 @@ spring:
     name: customer
   data:
     mongodb:
-      uri: mongodb://root:vantu@localhost:27017/microservice?authSource=admin
+      uri: mongodb://root:vantu@localhost:27017/Microservice?authSource=admin

@@ -5,7 +5,25 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ./data:/data/db
+      - ./data:/data
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=vantu
+  jenkins:
+    image: jenkins/jenkins
+    ports:
+      - "8888:8080"
+    volumes:
+      - ./jenkins:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+  agent:
+    image: jenkins/ssh-agent:jdk11
+    privileged: true
+    user: root
+    container_name: agent
+    expose:
+      - 22
+    environment:
+      - JENKINS_AGENT_SSH_PUBKEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/f/psXWl3D8CzaJ9JnMvjGMcs1RAZnRrANA9AUtPg7J1MbmeB6tED1kOY2QEn/iV6oDupiJnf1FOPM2QYEGJJpopR1uP1x7oouT/HmNqLbqDa4xWKLO6JE/rx59lxjZzmUWyC2QjUknCJESWsx1qMsKBg9JP/Z4q4XDIAqPAqWPLQisH1rnIwNkNxijAiSM6obqolxRLImhpnRaDMU2/8V+QdoM9Q2xRfDQZ8VYl4Jo4nuWZQAgG2qbKTgvf7ZQun5ddusOPSZFlGXoqXBolu1mtrGZ0okEm51d5IBHTLnFX828jBUAtdVv9B5bfeftZz8IgRokXNRAiOPqux7BxV vantu@NB26200
+    volumes:
+      - ./jenkins-agent:/home/jenkins/agent
