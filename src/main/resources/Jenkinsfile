@@ -1,0 +1,16 @@
+pipeline {
+agent any
+stages {
+stage("Checkout") {
+steps {
+git url: 'https://github.com/tutranvan156/Microservices.git'
+}
+
+}
+stage("Compile") {
+    steps {
+        sh "./mvnw compile"
+    }
+}
+}
+}
