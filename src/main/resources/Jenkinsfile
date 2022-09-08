@@ -7,7 +7,7 @@ git url: 'https://github.com/tutranvan156/Microservices.git'
 }
 
 }
-stage("Compile") {
+stage("Compile-in-jenkins") {
     steps {
         sh "./mvnw compile"
     }
